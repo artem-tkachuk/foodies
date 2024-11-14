@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import logoImg from "@/assets/logo.png";
+import logoImg from "@/public/images/logo.png";
 
 export default function MainHeader() {
     return (
