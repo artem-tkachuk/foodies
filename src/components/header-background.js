@@ -1,10 +1,7 @@
 export default function HeaderBackground() {
     return (
         <div className="header-background">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1440 320"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                 <defs>
                     <linearGradient
                         id="gradient"
