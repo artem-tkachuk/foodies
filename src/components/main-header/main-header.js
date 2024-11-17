@@ -6,7 +6,7 @@ import NavLink from "./nav-link";
 
 import logoImg from "@/public/images/logo.png";
 
-import styles from "@/styles/main-header.module.css";
+import styles from "@/styles/main-header/main-header.module.css";
 
 export default function MainHeader() {
     return (

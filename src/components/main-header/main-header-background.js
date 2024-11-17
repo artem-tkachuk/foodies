@@ -1,4 +1,4 @@
-import styles from "@/styles/main-header-background.module.css";
+import styles from "@/styles/main-header/main-header-background.module.css";
 
 export default function MainHeaderBackground() {
     return (

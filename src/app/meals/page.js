@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import MealsGrid from "@/components/meals/meals-grid";
 
-import styles from "@/styles/meals.module.css";
+import styles from "@/styles/meals/meals.module.css";
 
 export default function MealsPage() {
     return (

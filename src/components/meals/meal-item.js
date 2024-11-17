@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import classes from "@/styles/meal-item.module.css";
+import classes from "@/styles/meals/meal-item.module.css";
 
 export default function MealItem({ title, mealName, image, summary, creator }) {
     return (

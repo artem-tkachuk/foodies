@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import Image from "next/image";
 
-import styles from "@/styles/image-slideshow.module.css";
+import styles from "@/styles/images/image-slideshow.module.css";
 
 import burgerImg from "@/assets/burger.jpg";
 import curryImg from "@/assets/curry.jpg";

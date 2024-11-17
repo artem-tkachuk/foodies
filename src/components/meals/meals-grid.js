@@ -1,6 +1,6 @@
 import MealItem from "@/components/meals/meal-item";
 
-import styles from "@/styles/meals-grid.module.css";
+import styles from "@/styles/meals/meals-grid.module.css";
 
 export default function MealsGrid({ meals }) {
     return (
