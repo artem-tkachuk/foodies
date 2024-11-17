@@ -21,10 +21,7 @@ export default function CommunityPage() {
 
                 <ul className={styles.perks}>
                     <li>
-                        <Image
-                            src={mealIcon}
-                            alt="A delicious meal"
-                        />
+                        <Image src={mealIcon} alt="A delicious meal" />
                         <p>Share & discover recipes</p>
                     </li>
                     <li>
