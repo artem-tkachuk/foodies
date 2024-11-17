@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 import MainHeaderBackground from "@/components/main-header/main-header-background";
 
@@ -8,6 +11,8 @@ import styles from "@/styles/main-header.module.css";
 import logoImg from "@/public/images/logo.png";
 
 export default function MainHeader() {
+    const pathname = usePathname();
+
     return (
         <>
             <MainHeaderBackground />
@@ -25,10 +30,20 @@ export default function MainHeader() {
                 <nav className={styles.nav}>
                     <ul>
                         <li>
-                            <Link href="/meals">Browse Meals</Link>
+                            <Link
+                                href="/meals"
+                                className={pathname.startsWith("/meals") ? styles.active : ""}
+                            >
+                                Browse Meals
+                            </Link>
                         </li>
                         <li>
-                            <Link href="/community">Foodies Community</Link>
+                            <Link
+                                href="/community"
+                                className={pathname.startsWith("/community") ? styles.active : ""}
+                            >
+                                Foodies Community
+                            </Link>
                         </li>
                     </ul>
                 </nav>
