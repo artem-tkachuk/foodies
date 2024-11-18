@@ -1,7 +1,5 @@
 {
-    "cSpell.words": [
-        "macncheese"
-    ],
+    "cSpell.words": ["macncheese"],
     "sqltools.useNodeRuntime": true,
     "sqltools.connections": [
         {
