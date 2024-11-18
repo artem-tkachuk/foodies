@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 
 import MealsGrid from "@/components/meals/meals-grid";
 
@@ -6,9 +7,13 @@ import { getMeals } from "@/lib/meals";
 
 import styles from "@/styles/meals/meals.module.css";
 
-export default async function MealsPage() {
+async function Meals() {
     const meals = await getMeals();
 
+    return <MealsGrid meals={meals} />;
+}
+
+export default function MealsPage() {
     return (
         <>
             <header className={styles.header}>
@@ -24,8 +29,15 @@ export default async function MealsPage() {
                     <Link href="/meals/share">Share Your Favorite Recipe</Link>
                 </p>
             </header>
-            <main>
-                <MealsGrid meals={meals} />
+            <main className={styles.main}>
+                {/* Show loading fallback just for this part of JSX code instead of the entire page like loading.js does */}
+                <Suspense
+                    fallback={
+                        <p className={styles.loading}>Fetching meals...</p>
+                    }
+                >
+                    <Meals />
+                </Suspense>
             </main>
         </>
     );
