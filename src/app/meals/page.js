@@ -13,6 +13,7 @@ async function Meals() {
     return <MealsGrid meals={meals} />;
 }
 
+// we can use async keyword here because it's a server component
 export default function MealsPage() {
     return (
         <>
