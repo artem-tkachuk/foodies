@@ -12,9 +12,9 @@ export async function getMeals() {
 }
 
 // export async function getMeal(idMeal) {
-export function getMeal(idMeal) {
-    // Simulate a delay
-    // await new Promise((resolve) => setTimeout(resolve, 10000));
+export async function getMeal(idMeal) {
+    // Simulate a delay to test loading states
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     // not using ? opens us up to SQL injection attacks
     // sqlite3 will protect us from this
