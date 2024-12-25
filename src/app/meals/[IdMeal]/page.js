@@ -1,13 +1,25 @@
-import Link from "next/link";
+import { notFound } from "next/navigation";
+// import Link from "next/link";
 import Image from "next/image";
+import { Suspense } from "react";
+
+import LoadingMealDetails from "./loading";
 
 import { getMeal } from "@/lib/meals";
 
 import styles from "@/styles/meals/meal-details.module.css";
-import { notFound } from "next/navigation";
+
 
 export default function MealDetailsPage({ params }) {
-    const meal = getMeal(params.IdMeal);
+    return (
+        <Suspense fallback={<LoadingMealDetails />}>
+            <MealDetails mealId={params.IdMeal} />
+        </Suspense>
+    );
+}
+
+async function MealDetails({ mealId }) {
+    const meal = await getMeal(mealId);
 
     if (!meal) {
         // Calling this function will stop this component from rendering and will show the closest not found or error page
