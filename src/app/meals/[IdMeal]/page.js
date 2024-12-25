@@ -10,16 +10,8 @@ import { getMeal } from "@/lib/meals";
 import styles from "@/styles/meals/meal-details.module.css";
 
 
-export default function MealDetailsPage({ params }) {
-    return (
-        <Suspense fallback={<LoadingMealDetails />}>
-            <MealDetails mealId={params.IdMeal} />
-        </Suspense>
-    );
-}
-
-async function MealDetails({ mealId }) {
-    const meal = await getMeal(mealId);
+export default async function MealDetailsPage({ params }) {
+    const meal = await getMeal(params.IdMeal);
 
     if (!meal) {
         // Calling this function will stop this component from rendering and will show the closest not found or error page
