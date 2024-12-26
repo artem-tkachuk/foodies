@@ -63,6 +63,7 @@ export default function ImagePicker({ label, name }) {
                         ref={imageInputRef}
                         // multiple={true} { /* If we want to allow the user to pick multiple images, but we don't need that here */ }
                         onChange={handleImageChange}
+                        required
                     />
                     {/* 
                         If we don't set the button type to "button", it will default to "submit" 
