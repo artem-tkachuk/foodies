@@ -6,7 +6,6 @@ import { getMeal } from "@/lib/meals";
 
 import styles from "@/styles/meals/meal-details.module.css";
 
-
 export default async function MealDetailsPage({ params }) {
     const meal = await getMeal(params.IdMeal);
 
