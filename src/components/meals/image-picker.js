@@ -5,12 +5,11 @@ import { useState, useRef } from "react";
 import styles from "@/styles/meals/image-picker.module.css";
 import Image from "next/image";
 
-
 export default function ImagePicker({ label, name }) {
     const [pickedImage, setPickedImage] = useState(null);
-    
+
     const imageInputRef = useRef();
-    
+
     function handlePickerClick() {
         imageInputRef.current.click();
     }
@@ -30,7 +29,7 @@ export default function ImagePicker({ label, name }) {
         // When the file is read, the onload function is called
         fileReader.onload = () => {
             setPickedImage(fileReader.result);
-        }
+        };
         fileReader.readAsDataURL(file);
     }
 
@@ -40,15 +39,15 @@ export default function ImagePicker({ label, name }) {
                 <label htmlFor={name}>{label}</label>
                 <div className={styles.controls}>
                     <div className={styles.preview}>
-                        {!pickedImage ? 
-                            <p>No image picked yet</p> 
-                            : 
-                            <Image 
-                                src={pickedImage} 
-                                alt="Image selected by the user for their meal" 
-                                fill 
+                        {!pickedImage ? (
+                            <p>No image picked yet</p>
+                        ) : (
+                            <Image
+                                src={pickedImage}
+                                alt="Image selected by the user for their meal"
+                                fill
                             />
-                        }
+                        )}
                     </div>
                     {/* 
                         Because of the "display: none" in the stylesheet, the input is hidden.
@@ -69,9 +68,9 @@ export default function ImagePicker({ label, name }) {
                         If we don't set the button type to "button", it will default to "submit" 
                         Which means that clicking this button will submit the form!
                     */}
-                    <button 
-                        className={styles.button} 
-                        type="button" 
+                    <button
+                        className={styles.button}
+                        type="button"
                         onClick={handlePickerClick}
                     >
                         Pick an image!

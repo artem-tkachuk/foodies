@@ -10,7 +10,7 @@ import ImagePicker from "@/components/meals/image-picker";
 
 import { shareMeal } from "@/lib/actions";
 
-export default function ShareMealPage() {    
+export default function ShareMealPage() {
     return (
         <>
             <header className={styles.header}>

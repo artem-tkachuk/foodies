@@ -24,7 +24,7 @@ export async function shareMeal(formData) {
         image: formData.get("mealImage"),
         creator: formData.get("name"),
         creator_email: formData.get("email"),
-    }
+    };
 
     // TODO: We can now use the meal object to create a new meal in the database
 
