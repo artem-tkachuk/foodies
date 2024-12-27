@@ -1,4 +1,6 @@
 import sql from "better-sqlite3";
+import slugify from "slugify";
+import xss from "xss";
 
 const db = sql("meals.db");
 
@@ -19,4 +21,12 @@ export async function getMeal(idMeal) {
     // not using ? opens us up to SQL injection attacks
     // sqlite3 will protect us from this
     return db.prepare("SELECT * FROM meals WHERE slug = ?").get(idMeal); // slug is the column name in the meals table
+}
+
+export function saveMeal(meal) {
+    // We need to create a slug for the meal
+    meal.slug = slugify(meal.title, { lower: true }); // all characters are lowercase
+
+    // We need to sanitize the meal instructions to prevent XSS attacks
+    meal.instructions = xss(meal.instructions);
 }
