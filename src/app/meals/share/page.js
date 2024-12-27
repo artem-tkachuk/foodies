@@ -1,8 +1,16 @@
+// We now can make this a client component because we're moved server actions to the lib/actions.js file
+// We couldn't do this before because we were defining server and client code in the same file
+// Next.js's build process is not able to separate server and client code in the same file in the clean way
+// Server code could end up on the client side, which could pose security risks
+// So we're moving server actions to a separate file
+"use client";
+
 import styles from "@/styles/share/share.module.css";
 import ImagePicker from "@/components/meals/image-picker";
 
+import { shareMeal } from "@/lib/actions";
 
-export default function ShareMealPage() {
+export default function ShareMealPage() {    
     return (
         <>
             <header className={styles.header}>
@@ -14,7 +22,13 @@ export default function ShareMealPage() {
             </header>
 
             <main className={styles.main}>
-                <form className={styles.form}>
+                {/* 
+                    Action prop is usually set to some path like action="/some-url" to which the request/form data is sent
+                    if we're relying on the browser built-in form submission.
+                    But here we don't need to send it to a specific path, we just want to execute the function
+                    So we set it to the function name itself
+                */}
+                <form className={styles.form} action={shareMeal}>
                     <div className={styles.row}>
                         <p>
                             <label htmlFor="name">Your name</label>
