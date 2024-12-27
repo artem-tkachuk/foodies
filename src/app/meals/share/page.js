@@ -52,7 +52,7 @@ export default function ShareMealPage() {
                             required
                         ></textarea>
                     </p>
-                    <ImagePicker label="Meal Image" name="mealImage" />
+                    <ImagePicker label="Your meal image" name="mealImage" />
                     <p className={styles.actions}>
                         <button type="submit">Share Meal</button>
                     </p>
