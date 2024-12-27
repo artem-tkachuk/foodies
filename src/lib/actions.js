@@ -1,6 +1,10 @@
 // When adding this directive, all functions in this file are treated as server actions
 "use server";
 
+import { redirect } from "next/navigation";
+
+import { saveMeal } from "./meals";
+
 // async is another necessary keyword to make it a server action
 // formData is the object that contains input keys and values from the for
 // It uses FormData class available in JavaScript to create an object that contains the form data
@@ -28,5 +32,11 @@ export async function shareMeal(formData) {
 
     // TODO: We can now use the meal object to create a new meal in the database
 
-    console.log(meal);
+    //// DEBUG
+    // console.log(meal);
+
+    // TODO: handle exceptions
+    await saveMeal(meal);
+
+    redirect("/meals");
 }
