@@ -55,8 +55,6 @@ export async function shareMeal(formData) {
         creator_email: formData.get("email"),
     };
 
-    // TODO: We can now use the meal object to create a new meal in the database
-
     if (isInvalidMeal(meal)) {
         throw new Error("Invalid input");
     }
