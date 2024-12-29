@@ -36,7 +36,7 @@ function isInvalidMeal(meal) {
 
 // WARN: adding server actions like this will only work if such server action is part of the server component
 // i.e. we're not allowed to have server actions in client components
-export async function shareMeal(formData) {
+export async function shareMeal(prevState, formData) {
     // LEGACY COMMENTS:
     // This directive creates a Server Action – a function that is guaranteed to run on the server and only there
     // Components by default are server components => only execute on the server
@@ -56,7 +56,13 @@ export async function shareMeal(formData) {
     };
 
     if (isInvalidMeal(meal)) {
-        throw new Error("Invalid input");
+        // throw new Error("Invalid input");
+
+        // we don't have to either redirect or throw an error, we can just return a response object
+        // it should be a serializable object –> it shouldn't include any methods
+        return {
+            message: "Invalid input",
+        };
     }
 
     //// DEBUG

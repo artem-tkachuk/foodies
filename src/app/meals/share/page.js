@@ -5,6 +5,8 @@
 // So we're moving server actions to a separate file
 "use client";
 
+import { useActionState } from "react";
+
 import MealsFormSubmit from "@/components/meals/meals-form-submit";
 import ImagePicker from "@/components/meals/image-picker";
 
@@ -13,6 +15,12 @@ import { shareMeal } from "@/lib/actions";
 import styles from "@/styles/share/share.module.css";
 
 export default function ShareMealPage() {
+    // First argument is the server action that should be triggered when the form is submitted
+    // Second argument is the initial state
+    // state holds the latest response returned by the server action
+    // this is man in the middle pattern – resembling middleware in Node.js
+    const [state, formAction] = useActionState(shareMeal, { message: null });
+    
     return (
         <>
             <header className={styles.header}>
@@ -30,7 +38,7 @@ export default function ShareMealPage() {
                     But here we don't need to send it to a specific path, we just want to execute the function
                     So we set it to the function name itself
                 */}
-                <form className={styles.form} action={shareMeal}>
+                <form className={styles.form} action={formAction}>
                     <div className={styles.row}>
                         <p>
                             <label htmlFor="name">Your name</label>
@@ -69,6 +77,7 @@ export default function ShareMealPage() {
                         ></textarea>
                     </p>
                     <ImagePicker label="Your meal image" name="mealImage" />
+                    {state.message && <p className={styles.error}>{state.message}</p>}
                     <p className={styles.actions}>
                         <MealsFormSubmit />
                     </p>
