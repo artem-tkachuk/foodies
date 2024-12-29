@@ -5,6 +5,31 @@ import { redirect } from "next/navigation";
 
 import { saveMeal } from "./meals";
 
+const requiredProperties = ["title", "summary", "instructions", "image", "creator", "creator_email"];
+
+function isInvalidMeal(meal) {
+    // Check for unexpected properties
+    if (Object.keys(meal).length !== requiredProperties.length) {
+        return true; // Return false if there are unexpected properties
+    }
+    
+    for (const prop of requiredProperties) {
+        if (!meal[prop] || (prop != "image" && meal[prop].trim() === "")) {
+            return true;
+        }
+    }
+
+    if (meal.creator_email.includes("@")) {
+        return true;
+    }
+
+    if (meal.image.size === 0) {
+        return true;
+    }
+
+    return false; // Return false if all properties are valid
+}
+
 // async is another necessary keyword to make it a server action
 // formData is the object that contains input keys and values from the for
 // It uses FormData class available in JavaScript to create an object that contains the form data
@@ -31,6 +56,10 @@ export async function shareMeal(formData) {
     };
 
     // TODO: We can now use the meal object to create a new meal in the database
+
+    if (isInvalidMeal(meal)) {
+        throw new Error("Invalid input");
+    }
 
     //// DEBUG
     // console.log(meal);
