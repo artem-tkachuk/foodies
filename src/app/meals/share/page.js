@@ -5,10 +5,12 @@
 // So we're moving server actions to a separate file
 "use client";
 
-import styles from "@/styles/share/share.module.css";
+import MealsFormSubmit from "@/components/meals/meals-form-submit";
 import ImagePicker from "@/components/meals/image-picker";
 
 import { shareMeal } from "@/lib/actions";
+
+import styles from "@/styles/share/share.module.css";
 
 export default function ShareMealPage() {
     return (
@@ -68,7 +70,7 @@ export default function ShareMealPage() {
                     </p>
                     <ImagePicker label="Your meal image" name="mealImage" />
                     <p className={styles.actions}>
-                        <button type="submit">Share Meal</button>
+                        <MealsFormSubmit />
                     </p>
                 </form>
             </main>
