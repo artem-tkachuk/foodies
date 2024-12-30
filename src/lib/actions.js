@@ -19,7 +19,7 @@ function isInvalidMeal(meal) {
         }
     }
 
-    if (meal.creator_email.includes("@")) {
+    if (!meal.creator_email.includes("@")) {
         return true;
     }
 
