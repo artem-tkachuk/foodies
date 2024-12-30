@@ -5,7 +5,7 @@
 // So we're moving server actions to a separate file
 "use client";
 
-import { useActionState } from "react";
+import { useFormState } from "react-dom";
 
 import MealsFormSubmit from "@/components/meals/meals-form-submit";
 import ImagePicker from "@/components/meals/image-picker";
@@ -19,7 +19,7 @@ export default function ShareMealPage() {
     // Second argument is the initial state
     // state holds the latest response returned by the server action
     // this is man in the middle pattern – resembling middleware in Node.js
-    const [state, formAction] = useActionState(shareMeal, { message: null });
+    const [state, formAction] = useFormState(shareMeal, { message: null });
     
     return (
         <>
