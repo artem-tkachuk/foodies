@@ -2,6 +2,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 import { saveMeal } from "./meals";
 
@@ -70,6 +71,17 @@ export async function shareMeal(prevState, formData) {
 
     // TODO: handle exceptions
     await saveMeal(meal);
+    
+    // we know that in this server action we're updating the meals page
+    // and the this page's data depends on the new meal we just submitted
+    // so we need to revalidate the meals page
+    // NOTE: by default only the specified path is revalidated, not the nested pages
+    // specifying "layout" will revalidate all the nested pages
+    // revalidating means Next.js will throw away the old pages from the cache and re-generate the pages and cache them again (if they're cached)
+    // [mealId] page is dynamically generated, so it's not cached
+    // can revalidate the entire app with revalidatePath("/", "layout");
+    // here we don't care about the nested pages, so we can use "page"
+    revalidatePath("/meals", "page"); // default is "page"
 
     redirect("/meals");
 }
