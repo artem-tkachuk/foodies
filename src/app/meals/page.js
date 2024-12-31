@@ -8,6 +8,9 @@ import { getMeals } from "@/lib/meals";
 import styles from "@/styles/meals/meals.module.css";
 
 async function Meals() {
+    // [FIXED] This is not logged anymore in PROD build on every run of this component because these pages are pregenerated and cached (by default)
+    console.log("Fetching meals..."); 
+
     const meals = await getMeals();
 
     return <MealsGrid meals={meals} />;
